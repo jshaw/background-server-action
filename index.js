@@ -22,14 +22,17 @@ const isUrl = (s) => /^https?:\/\//.test(s)
   label = 'executing'
 ) => {
   console.log('%s command "%s"', label, fullCommand)
+  console.log('full command "%s"', fullCommand)
+
 
   const args = cliParser.parse(fullCommand)
   // const args = fullCommand
   // debug(`parsed command: ${args.join(' ')}`)
+  console.log('args "%s"', args)
   debug(`parsed command: ${args}`)
 
   return io.which(args[0], true).then((toolPath) => {
-    console.log("---> toolPath: ", toolPath)
+    console.log('toolPath: "%s"', toolPath)
     debug(`found command "${toolPath}"`)
     debug(`with arguments ${args.slice(1).join(' ')}`)
 
