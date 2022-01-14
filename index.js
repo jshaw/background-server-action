@@ -23,12 +23,13 @@ const isUrl = (s) => /^https?:\/\//.test(s)
 ) => {
   console.log('%s command "%s"', label, fullCommand)
 
-  // const args = cliParser.parse(fullCommand)
-  const args = fullCommand)
+  const args = cliParser.parse(fullCommand)
+  // const args = fullCommand
   // debug(`parsed command: ${args.join(' ')}`)
   debug(`parsed command: ${args}`)
 
   return io.which(args[0], true).then((toolPath) => {
+    console.log("---> toolPath: ", toolPath)
     debug(`found command "${toolPath}"`)
     debug(`with arguments ${args.slice(1).join(' ')}`)
 
@@ -74,6 +75,7 @@ async function run() {
   )
 
   return Promise.all(separateCommands.map(async (command) => {
+    console.log("--> command: ", command)
     return execCommand(
       command,
       true,
