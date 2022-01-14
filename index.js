@@ -82,7 +82,7 @@ async function run() {
     return execCommand(
       command,
       true,
-      `run command "${command}"`
+      `--> run command "${command}"`
     )
   }))
 }
